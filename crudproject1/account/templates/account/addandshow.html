@@ -1,0 +1,42 @@
+{% extends 'account/base.html' %}
+{% block content %}
+<div class="row">
+<div class="col-sm-4">
+    <h4 class='text-center alert alert-info'>Add New Customer</h4>
+    <form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-success" value="Add">
+    </form>
+</div>
+
+<div class="col-sm-8">
+<h4 class='text-center alert alert-info'>Show Customer Information</h4>
+    {% if stud %}
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID </th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for st in stud %}
+        <tr>
+            <th scope="row">{{st.id}}</th>
+            <td>{{st.name}}</td>
+            <td>{{st.email}}</td>
+            <td>{{st.password}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h4 class='text-center alert alert-warning'>Show Customer Information</h4>
+ 
+    {% endif %}
+</div>
+</div>
+{% endblock content %}
